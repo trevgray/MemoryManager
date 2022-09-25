@@ -1,14 +1,18 @@
+#include "MemoryManager.h"
 #include <iostream>
-#include <memory>
 #include <vector>
+
+std::size_t memoryUsed;
 
 void* operator new(std::size_t amount) {
 	std::cout << "allocating " << amount << " bytes of memory\n";
+	memoryUsed += amount;
 	return malloc(amount);
 }
 
 void operator delete(void* memoryLocation, std::size_t amount) {
 	std::cout << "freeing " << amount << " bytes of memory\n";
+	memoryUsed -= amount;
 	free(memoryLocation);
 }
 
@@ -20,6 +24,9 @@ struct Vec3 {
 };
 
 int main() {
+	using namespace MEMORYMANAGER;
+	memoryUsed = 0;
+
 	Vec3* vPtr = new Vec3();
 	delete vPtr;
 
@@ -30,4 +37,6 @@ int main() {
 	for (int i = 0; i < 32; i++) {
 		vectors.push_back(Vec3());
 	}
+	vectors.~vector();
+	std::cout << memoryUsed << std::endl;
 }
