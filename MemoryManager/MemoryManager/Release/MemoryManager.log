@@ -1,8 +1,13 @@
-﻿  Main.cpp
-  MemoryManager.cpp
+﻿  memmgr.cpp
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(92,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(94,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(108,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(110,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(124,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(126,23): warning C4309: '=': truncation of constant value
   Generating code
-  99 of 99 functions (100.0%) were compiled.
-    48 functions were new in current compilation
+  7 of 186 functions ( 3.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   MemoryManager.vcxproj -> E:\GitHub\MemoryManagerC--\MemoryManager\Release\MemoryManager.exe

@@ -127,10 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="free-list_mem_mgr.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="memmgr.cpp" />
     <ClCompile Include="MemoryManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="classes.h" />
+    <ClInclude Include="memmgr.h" />
     <ClInclude Include="MemoryManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
