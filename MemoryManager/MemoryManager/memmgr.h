@@ -16,17 +16,17 @@ class MemoryManager : public IMemoryManager
   {
   //the block sizes can be determined by the user based on approximating 
   //the sizes of object types used in the application 
-  //The MemoryPool can be initialised partially or completely , based on the 
-  //need and the frequency of occurence of certain types of object; 
+  //The MemoryPool can be initialized partially or completely , based on the 
+  //need and the frequency of occurrence of certain types of object; 
   //each block shall contain 4 extra bytes to store metadata information 
   //One such information is that indicating whether this block is free 
   //or not. Another tentative information could be guard bytes which detect 
   //heap memory corruption , ie , when someone writes beyond the boundary 
   //of an object accidentally via  memcpy or memset functions.In our 
-  //implementation everyblock is guarded by 4 bytes in the end.The first two 
+  //implementation every block is guarded by 4 bytes in the end.The first two 
   //bytes of these four are marked with  special characters 0xde,0xad indicating
   //the end of the block .The next byte will contain the size of block and the 
-  //of the byte shall indicate wheteher this block is free or available.
+  //of the byte shall indicate whether this block is free or available.
   private:
     std::forward_list<void*>     Byte8PtrList;
     std::forward_list<void*>     Byte16PtrList;
@@ -41,11 +41,14 @@ class MemoryManager : public IMemoryManager
     void InitialiseByte32List(void* );
     void InitialiseByte40List(void* );
 
-    const char* guardByte1;
-    const char* guardByte2;
+    unsigned int guardByte1;
+    unsigned int guardByte2;
   public: 
-      MemoryManager() { guardByte1 = nullptr; guardByte2 = nullptr; }
-    ~MemoryManager( ) {}
+      MemoryManager() { /*guardByte1 = nullptr; guardByte2 = nullptr;*/ }
+    ~MemoryManager( ) {
+        Byte24PtrList.clear();
+        MemoryPoolList.clear();
+    }
     void* allocate(size_t);
     void   deallocate(void*);
 

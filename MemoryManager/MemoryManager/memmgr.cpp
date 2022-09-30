@@ -3,6 +3,8 @@
 #include <string>
 using namespace std;
 
+
+
 #include "memmgr.h"
 #include "classes.h"
 #include <iostream>
@@ -67,35 +69,37 @@ void MemoryManager::deallocate(void* object) {
   char* init = static_cast<char*>(object);
   //std::cout << &(static_cast<char*>(object)[0]) + 20 << std::endl;
   //std::cout << init + 20 << std::endl;
-  if (init + 20 == "▐¡") {
-      //std::cout << &(static_cast<char*>(object)[0]) + 20 << std::endl;
-  }
 
   //char* test1 = &(static_cast<char*>(object)[0]) + 20;
   //char* test2 = &(static_cast<char*>(object)[0]) + 21;
 
-  std::cout << &(static_cast<char*>(object)[0]) + 20 << "  |||||  " << guardByte1 << std::endl;
+  /*for (size_t x = 0; x < 100; x++) {
+      std::cout << &(static_cast<unsigned int*>(object)[0]) + x << "  |||||  " << guardByte1 << std::endl;
+  }*/
+
+  //std::cout << &(static_cast<char*>(object)[0]) + 29 << "  |||||  " << guardByte1 << std::endl;
   
   while(true) {
     int count = 0;
-    while(init != guardByte1) {//this loop shall never iterate more than 
+    while(*init != guardByte1) {//this loop shall never iterate more than 
                           // MAX_BLOCK_SIZE times and hence is O(1)
-        //std::cout << init << " |||| " << test1 << std::endl;
+        std::cout << *init << " |||| " << guardByte1 << std::endl;
     init++;
     count++;
     if(count > MAX_BLOCK_SIZE) {
+        std::cout << *init << "  |||||  " << guardByte1 << std::endl;
         printf ("runtime heap memory corruption near %d", object);
         exit(1);
         } 
     }
-    if((++init) == guardByte2)  // we have hit the guard bytes
+    if((*++init) == guardByte2)  // we have hit the guard bytes
       break;  // from the outer while 
     }
   init++;  // ignore size byte
   init++;
   *init = 1; // set free/available byte   
 
-  guardByte1 = guardByte1; //what is happening here????
+  //guardByte1 = guardByte1; //what is happening here????
   }
 
 void MemoryManager::InitialiseByte24List(void* base)
@@ -104,11 +108,11 @@ void MemoryManager::InitialiseByte24List(void* base)
     {
     char* guardByteStart = &(static_cast<char*>(base)[i*24]) + 20;
     *guardByteStart = 0xde;
-    guardByte1 = guardByteStart;
+    guardByte1 = *guardByteStart;
 
     guardByteStart++; 
     *guardByteStart = 0xad;   //end of block
-    guardByte2 = guardByteStart;
+    guardByte2 = *guardByteStart;
 
     guardByteStart++;
     *guardByteStart = 24;     //sizeof block
@@ -124,10 +128,12 @@ void MemoryManager::InitialiseByte32List(void* base)
     {
     char* guardByteStart = &(static_cast<char*>(base)[i*32]) + 28;
     *guardByteStart = 0xde;
-     guardByte1 = guardByteStart;
+    guardByte1 = *guardByteStart;
 
     guardByteStart++; 
     *guardByteStart = 0xad;   //end of block
+    guardByte2 = *guardByteStart;
+
     guardByteStart++;
     *guardByteStart = 32;     //sizeof block
     guardByteStart++;
@@ -148,6 +154,6 @@ void MemoryManager::InitialiseByte40List(void* base)
     *guardByteStart = 40;     //sizeof block
     guardByteStart++;
     *guardByteStart = 1;      //block  available
-    Byte40PtrList.push_front(&(static_cast<char*>(base)[i*36])); 
+    Byte40PtrList.push_front(&(static_cast<char*>(base)[i*40]));
     }
   }

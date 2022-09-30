@@ -1,10 +1,2 @@
-﻿  memmgr.cpp
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(70,20): warning C4566: character represented by universal-character-name '\u2590' cannot be represented in the current code page (1252)
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(87,17): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'void *'
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(106,23): warning C4309: '=': truncation of constant value
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(110,23): warning C4309: '=': truncation of constant value
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(126,23): warning C4309: '=': truncation of constant value
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(130,23): warning C4309: '=': truncation of constant value
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(144,23): warning C4309: '=': truncation of constant value
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\memmgr.cpp(146,23): warning C4309: '=': truncation of constant value
+﻿  Main.cpp
   MemoryManager.vcxproj -> E:\GitHub\MemoryManagerC--\MemoryManager\Debug\MemoryManager.exe
