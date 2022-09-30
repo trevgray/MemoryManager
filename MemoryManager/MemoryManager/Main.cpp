@@ -29,18 +29,21 @@ struct Vec3 {
 int main(int agrc, char* argv[]) {
 
 	Vec3* vPtr = new Vec3();
-	delete vPtr;
+	
 	//std::unique_ptr<Vec3> v = std::make_unique<Vec3>();
 
-	std::vector<Vec3> vectors;
-	//vectors.reserve(32);
-	for (int i = 0; i < 32; i++) {
-		vectors.push_back(Vec3());
-	}
+	//std::vector<Vec3> vectors;
+	////vectors.reserve(32);
+	//for (int i = 0; i < 32; i++) {
+	//	vectors.push_back(Vec3());
+	//}
 	
 	Vec3* vPtr2 = new Vec3();
+	delete vPtr;
 	delete vPtr2;
-	vectors.~vector();
+	Vec3* vPtr3 = new Vec3();
+	delete vPtr3;
+	//vectors.~vector();
 
 	std::cout << memoryAllocated << std::endl;
 }

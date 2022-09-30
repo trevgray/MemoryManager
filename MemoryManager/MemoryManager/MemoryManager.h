@@ -4,12 +4,19 @@
 #include "SList.h"
 
 //struct MemorySegment {
-//	MemorySegment(void* memoryLocation_, bool isFree_) {
-//		memoryLocation = memoryLocation_;
-//		isFree = isFree_;
+//	MemorySegment() {
+//		memoryLocation = nullptr;
+//		next = nullptr;
 //	}
+//	MemorySegment(void* memoryLocation_) {
+//		memoryLocation = memoryLocation_;
+//		next = nullptr;
+//	}
+//	/*void SetNext(void* next_) {
+//		next = next_;
+//	}*/
 //	void* memoryLocation;
-//	bool isFree = false;
+//	void* next;
 //};
 
 #define SIXTEEN_BYTES = 16;
@@ -32,25 +39,25 @@ using byte = unsigned char; //basically just 8 bytes
 		std::size_t partitionSize;
 
 
-		SList<void*> sixteenByteList;
-		SList<void*> oneHundredByteList;
+		void* sixteenByteList[32];
+		/*SList<void*> oneHundredByteList;
 		SList<void*> oneThousandByteList;
 		SList<void*> eightThousandByteList;
-		SList<void*> thirtyTwoThousandByteList;
+		SList<void*> thirtyTwoThousandByteList;*/
 
-		MemoryManager() {
-			masterBlock = static_cast<byte*>(malloc(1024));
-			//blockIterator = 0;
-			partitionSize = 1024 / 4;
+		//MemoryManager() {
+		//	masterBlock = static_cast<byte*>(malloc(1024));
+		//	//blockIterator = 0;
+		//	partitionSize = 1024 / 4;
 
-			sixteenByteBlockIterator = 0;
-			oneHundredByteBlockIterator = partitionSize;
-			oneThousandByteBlockIterator = (partitionSize * 2);
-			eightThousandByteBlockIterator = (partitionSize * 3);
-			thirtyTwoThousandByteBlockIterator = (partitionSize * 4);
+		//	sixteenByteBlockIterator = 0;
+		//	oneHundredByteBlockIterator = partitionSize;
+		//	oneThousandByteBlockIterator = (partitionSize * 2);
+		//	eightThousandByteBlockIterator = (partitionSize * 3);
+		//	thirtyTwoThousandByteBlockIterator = (partitionSize * 4);
 
-			std::cout << "Master block is " << 1024 << " bytes" << std::endl;
-		}
+		//	std::cout << "Master block is " << 1024 << " bytes" << std::endl;
+		//}
 
 	public:
 		MemoryManager(std::size_t masterBlockSize) :masterBlock(nullptr) {
