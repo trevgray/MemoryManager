@@ -30,45 +30,28 @@ using byte = unsigned char; //basically just 8 bytes
 	private:
 		//static std::shared_ptr<MemoryManager> instance;
 		byte* masterBlock; //collection of bytes
-		std::size_t sixteenByteBlockIterator;
-		std::size_t oneHundredByteBlockIterator;
-		std::size_t oneThousandByteBlockIterator;
-		std::size_t eightThousandByteBlockIterator;
-		std::size_t thirtyTwoThousandByteBlockIterator;
 
 		std::size_t partitionSize;
 
+		int nineteenByteListSize;
 
-		void* sixteenByteList[32];
+		void* nineteenByteList[52631];
 		/*SList<void*> oneHundredByteList;
 		SList<void*> oneThousandByteList;
 		SList<void*> eightThousandByteList;
 		SList<void*> thirtyTwoThousandByteList;*/
 
-		//MemoryManager() {
-		//	masterBlock = static_cast<byte*>(malloc(1024));
-		//	//blockIterator = 0;
-		//	partitionSize = 1024 / 4;
-
-		//	sixteenByteBlockIterator = 0;
-		//	oneHundredByteBlockIterator = partitionSize;
-		//	oneThousandByteBlockIterator = (partitionSize * 2);
-		//	eightThousandByteBlockIterator = (partitionSize * 3);
-		//	thirtyTwoThousandByteBlockIterator = (partitionSize * 4);
-
-		//	std::cout << "Master block is " << 1024 << " bytes" << std::endl;
-		//}
-
 	public:
 		MemoryManager(std::size_t masterBlockSize) :masterBlock(nullptr) {
 			masterBlock = static_cast<byte*>(malloc(masterBlockSize));
 			partitionSize = masterBlockSize / 5;
-
-			sixteenByteBlockIterator = 0;
+			nineteenByteListSize = 52631;
+			Initialize();
+			/*sixteenByteBlockIterator = 0;
 			oneHundredByteBlockIterator = partitionSize;
 			oneThousandByteBlockIterator = (partitionSize * 2);
 			eightThousandByteBlockIterator = (partitionSize * 3);
-			thirtyTwoThousandByteBlockIterator = (partitionSize * 4);
+			thirtyTwoThousandByteBlockIterator = (partitionSize * 4);*/
 
 			std::cout << "Master block is " << masterBlockSize << " bytes" << std::endl;
 		}
@@ -85,5 +68,6 @@ using byte = unsigned char; //basically just 8 bytes
 		}
 		void* allocate(std::size_t memorySize);
 		void deallocate(void* memoryLocation, std::size_t memorySize);
+		void Initialize();
 	};
 

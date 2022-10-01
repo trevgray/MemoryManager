@@ -1,4 +1,10 @@
 ﻿  Main.cpp
   MemoryManager.cpp
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(7,68): warning C4018: '<': signed/unsigned mismatch
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(31,22): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(33,22): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(42,68): warning C4018: '<': signed/unsigned mismatch
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(45,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(47,21): warning C4309: '=': truncation of constant value
   Generating Code...
   MemoryManager.vcxproj -> E:\GitHub\MemoryManagerC--\MemoryManager\Debug\MemoryManager.exe

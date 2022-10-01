@@ -8,13 +8,13 @@ MemoryManager mm = MemoryManager(5000000);
 
 void* operator new(std::size_t memorySize) {
 	if (memorySize == 0) { memorySize++; }
-	std::cout << "allocating " << memorySize << " bytes of memory\n";
+	//std::cout << "allocating " << memorySize << " bytes of memory\n";
 	memoryAllocated += memorySize;
 	return mm.allocate(memorySize);
 }
 
 void operator delete(void* memoryLocation, std::size_t memorySize) {
-	std::cout << "freeing " << memorySize << " bytes of memory\n";
+	//std::cout << "freeing " << memorySize << " bytes of memory\n";
 	memoryAllocated -= memorySize;
 	mm.deallocate(memoryLocation, memorySize);
 }
@@ -23,6 +23,9 @@ struct Vec3 {
 	float x, y, z;
 	Vec3() {
 		x = y = z = 0.0f;
+	}
+	Vec3(int a) {
+		x = y = z = 1.0f;
 	}
 };
 
@@ -39,9 +42,9 @@ int main(int agrc, char* argv[]) {
 	//}
 	
 	Vec3* vPtr2 = new Vec3();
+	Vec3* vPtr3 = new Vec3(1);
 	delete vPtr;
 	delete vPtr2;
-	Vec3* vPtr3 = new Vec3();
 	delete vPtr3;
 	//vectors.~vector();
 
