@@ -1,10 +1,29 @@
 ﻿  Main.cpp
   MemoryManager.cpp
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(7,68): warning C4018: '<': signed/unsigned mismatch
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(31,22): warning C4309: '=': truncation of constant value
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(33,22): warning C4309: '=': truncation of constant value
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(42,68): warning C4018: '<': signed/unsigned mismatch
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(45,21): warning C4309: '=': truncation of constant value
-E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(47,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(80,24): warning C4018: '<': signed/unsigned mismatch
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(83,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(85,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(93,24): warning C4018: '<': signed/unsigned mismatch
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(96,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(98,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(106,24): warning C4018: '<': signed/unsigned mismatch
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(109,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(111,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(119,24): warning C4018: '<': signed/unsigned mismatch
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(122,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(124,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(132,24): warning C4018: '<': signed/unsigned mismatch
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(135,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(137,23): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(154,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(156,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(164,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(166,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(173,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(175,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(182,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(184,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(191,21): warning C4309: '=': truncation of constant value
+E:\GitHub\MemoryManagerC--\MemoryManager\MemoryManager\MemoryManager.cpp(193,21): warning C4309: '=': truncation of constant value
   Generating Code...
   MemoryManager.vcxproj -> E:\GitHub\MemoryManagerC--\MemoryManager\Debug\MemoryManager.exe

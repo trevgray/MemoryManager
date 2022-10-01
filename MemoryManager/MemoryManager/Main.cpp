@@ -35,18 +35,18 @@ int main(int agrc, char* argv[]) {
 	
 	//std::unique_ptr<Vec3> v = std::make_unique<Vec3>();
 
-	//std::vector<Vec3> vectors;
-	////vectors.reserve(32);
-	//for (int i = 0; i < 32; i++) {
-	//	vectors.push_back(Vec3());
-	//}
+	std::vector<Vec3> vectors;
+	//vectors.reserve(32);
+	for (int i = 0; i < 32; i++) {
+		vectors.push_back(Vec3());
+	}
 	
 	Vec3* vPtr2 = new Vec3();
 	Vec3* vPtr3 = new Vec3(1);
 	delete vPtr;
 	delete vPtr2;
 	delete vPtr3;
-	//vectors.~vector();
+	vectors.~vector();
 
 	std::cout << memoryAllocated << std::endl;
 }
