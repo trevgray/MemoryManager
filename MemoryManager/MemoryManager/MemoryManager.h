@@ -23,60 +23,63 @@ const int ONE_HUNDRED_BYTES = 128;
 const int ONE_THOUSAND_BYTES = 1024;
 const int EIGHT_THOUSAND_BYTES = 8192;
 const int THIRTY_TWO_THOUSAND_BYTES = 32768;
+const int SIXTY_FIVE_THOUSAND_BYTES = 65536;
 
 using byte = unsigned char; //basically just 8 bytes
-	class MemoryManager { //https://developer.ibm.com/tutorials/au-memorymanager/
-	private:
-		//static std::shared_ptr<MemoryManager> instance;
-		byte* masterBlock; //collection of bytes
+class MemoryManager { //https://developer.ibm.com/tutorials/au-memorymanager/
+private:
+	//static std::shared_ptr<MemoryManager> instance;
+	byte* masterBlock; //collection of bytes
 
-		std::size_t partitionSize;
+	std::size_t partitionSize;
 
-		int nineteenByteListSize;
-		int oneHundredByteListSize;
-		int oneThousandByteListSize;
-		int eightThousandByteListSize;
-		int thirtyTwoThousandByteListSize;
+	int nineteenByteListSize;
+	int oneHundredByteListSize;
+	int oneThousandByteListSize;
+	int eightThousandByteListSize;
+	int thirtyTwoThousandByteListSize;
+	int sixtyFiveThousandByteListSize;
 
-		void* nineteenByteList[52631]; //partitionSize / 16 + 3
-		void* oneHundredByteList[7633]; //partitionSize / 128 + 3
-		void* oneThousandByteList[973]; //partitionSize / 1024 + 3
-		void* eightThousandByteList[122]; //partitionSize / 8192 + 3
-		void* thirtyTwoThousandByteList[29]; //partitionSize / 32768 + 3
+	void* nineteenByteList[52631]; //partitionSize / 16 + 3
+	void* oneHundredByteList[7633]; //partitionSize / 128 + 3
+	void* oneThousandByteList[973]; //partitionSize / 1024 + 3
+	void* eightThousandByteList[122]; //partitionSize / 8192 + 3
+	void* thirtyTwoThousandByteList[29]; //partitionSize / 32768 + 3
+	void* sixtyFiveThousandByteList[15]; //65536
 
-	public:
-		MemoryManager(std::size_t masterBlockSize) :masterBlock(nullptr) { //set up for 5000000 bits
-			masterBlock = static_cast<byte*>(malloc(masterBlockSize));
-			partitionSize = masterBlockSize / 5; //making 5 
+public:
+	MemoryManager(std::size_t masterBlockSize) :masterBlock(nullptr) { //set up for 5000000 bits
+		masterBlock = static_cast<byte*>(malloc(masterBlockSize));
+		partitionSize = masterBlockSize / 6; //making 5 
 
-			nineteenByteListSize = 52631; //same as the array
-			oneHundredByteListSize = 7633;
-			oneThousandByteListSize = 973;
-			eightThousandByteListSize = 122;
-			thirtyTwoThousandByteListSize = 29;
+		nineteenByteListSize = 52631; //same as the array
+		oneHundredByteListSize = 7633;
+		oneThousandByteListSize = 973;
+		eightThousandByteListSize = 122;
+		thirtyTwoThousandByteListSize = 29;
+		sixtyFiveThousandByteListSize = 15;
 
-			Initialize();
-			/*sixteenByteBlockIterator = 0;
-			oneHundredByteBlockIterator = partitionSize;
-			oneThousandByteBlockIterator = (partitionSize * 2);
-			eightThousandByteBlockIterator = (partitionSize * 3);
-			thirtyTwoThousandByteBlockIterator = (partitionSize * 4);*/
+		Initialize();
+		/*sixteenByteBlockIterator = 0;
+		oneHundredByteBlockIterator = partitionSize;
+		oneThousandByteBlockIterator = (partitionSize * 2);
+		eightThousandByteBlockIterator = (partitionSize * 3);
+		thirtyTwoThousandByteBlockIterator = (partitionSize * 4);*/
 
-			std::cout << "Master block is " << masterBlockSize << " bytes" << std::endl;
+		std::cout << "Master block is " << masterBlockSize << " bytes" << std::endl;
+	}
+	/*static std::shared_ptr<MemoryManager> GetInstance() {
+		if (!instance) {
+			instance = std::shared_ptr<MemoryManager>(new MemoryManager);
 		}
-		/*static std::shared_ptr<MemoryManager> GetInstance() {
-			if (!instance) {
-				instance = std::shared_ptr<MemoryManager>(new MemoryManager);
-			}
-			return instance;
-		}*/
+		return instance;
+	}*/
 
-		~MemoryManager() {
-			if (masterBlock) free(masterBlock);
-			std::cout << "Freed the MasterBlock" << std::endl;
-		}
-		void* allocate(std::size_t memorySize);
-		void deallocate(void* memoryLocation, std::size_t memorySize);
-		void Initialize();
-	};
-
+	~MemoryManager() {
+		if (masterBlock) free(masterBlock);
+		std::cout << "Freed the MasterBlock" << std::endl;
+	}
+	void* allocate(std::size_t memorySize);
+	void deallocate(void* memoryLocation, std::size_t memorySize);
+	void Initialize();
+};

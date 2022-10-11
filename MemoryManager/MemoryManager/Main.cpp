@@ -3,19 +3,38 @@
 #include "MemoryManager.h"
 
 static std::size_t memoryAllocated = 0;
+static std::size_t timesNewCalled = 0;
+static std::size_t timesDeleteCalled = 0;
 
-MemoryManager mm = MemoryManager(5000000);
+static std::size_t maxMemoryAllocated = 0;
+static std::size_t minMemoryAllocated = 0;
+
+MemoryManager mm = MemoryManager(6000000);
 
 void* operator new(std::size_t memorySize) {
 	if (memorySize == 0) { memorySize++; }
+	if (memorySize < minMemoryAllocated || minMemoryAllocated == 0) { minMemoryAllocated = memorySize; }
+	if (memorySize > maxMemoryAllocated) { maxMemoryAllocated = memorySize; }
 	//std::cout << "allocating " << memorySize << " bytes of memory\n";
 	memoryAllocated += memorySize;
+	timesNewCalled++;
 	return mm.allocate(memorySize);
 }
 
 void operator delete(void* memoryLocation, std::size_t memorySize) {
 	//std::cout << "freeing " << memorySize << " bytes of memory\n";
 	memoryAllocated -= memorySize;
+	timesDeleteCalled++;
+	mm.deallocate(memoryLocation, memorySize);
+}
+
+void* operator new[](size_t memorySize)
+{
+	return mm.allocate(memorySize);
+}
+
+void operator delete[](void* memoryLocation, std::size_t memorySize)
+{
 	mm.deallocate(memoryLocation, memorySize);
 }
 
@@ -30,6 +49,12 @@ struct Vec3 {
 };
 
 int main(int agrc, char* argv[]) {
+	char* buffer = nullptr;
+	int bufferSize = 10;
+	//buffer = new char;
+	buffer = new char[(int)(bufferSize + 1)];
+
+	delete[] buffer;
 
 	Vec3* vPtr = new Vec3();
 	
@@ -48,5 +73,9 @@ int main(int agrc, char* argv[]) {
 	delete vPtr3;
 	vectors.~vector();
 
-	std::cout << memoryAllocated << std::endl;
+	std::cout << "memoryAllocated " << memoryAllocated << std::endl;
+	std::cout << "timesNewCalled " << timesNewCalled << std::endl;
+	std::cout << "timesDeleteCalled " << timesDeleteCalled << std::endl;
+	std::cout << "maxMemoryAllocated " << maxMemoryAllocated << std::endl;
+	std::cout << "minMemoryAllocated " << minMemoryAllocated << std::endl;
 }
