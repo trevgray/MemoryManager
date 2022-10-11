@@ -13,6 +13,7 @@ MemoryManager mm = MemoryManager(6000000);
 
 void* operator new(std::size_t memorySize) {
 	if (memorySize == 0) { memorySize++; }
+
 	if (memorySize < minMemoryAllocated || minMemoryAllocated == 0) { minMemoryAllocated = memorySize; }
 	if (memorySize > maxMemoryAllocated) { maxMemoryAllocated = memorySize; }
 	//std::cout << "allocating " << memorySize << " bytes of memory\n";
@@ -28,15 +29,28 @@ void operator delete(void* memoryLocation, std::size_t memorySize) {
 	mm.deallocate(memoryLocation, memorySize);
 }
 
-void* operator new[](size_t memorySize)
+void* operator new[](std::size_t memorySize)
 {
+	if (memorySize == 0) { memorySize++; }
+
+	if (memorySize < minMemoryAllocated || minMemoryAllocated == 0) { minMemoryAllocated = memorySize; }
+	if (memorySize > maxMemoryAllocated) { maxMemoryAllocated = memorySize; }
+	//std::cout << "allocating " << memorySize << " bytes of memory\n";
+	memoryAllocated += memorySize;
+	timesNewCalled++;
 	return mm.allocate(memorySize);
 }
 
-void operator delete[](void* memoryLocation, std::size_t memorySize)
-{
-	mm.deallocate(memoryLocation, memorySize);
-}
+//void operator delete[](void* memoryLocation, std::size_t memorySize) noexcept
+//{
+//	mm.deallocate(memoryLocation, memorySize);
+//}
+
+//void operator delete[](void* memoryLocation)
+//{
+//	std::cout << _msize(memoryLocation) << std::endl;
+//	mm.deallocate(memoryLocation, 11);
+//}
 
 struct Vec3 {
 	float x, y, z;
@@ -54,7 +68,7 @@ int main(int agrc, char* argv[]) {
 	//buffer = new char;
 	buffer = new char[(int)(bufferSize + 1)];
 
-	delete[] buffer;
+	::operator delete(buffer, 11);
 
 	Vec3* vPtr = new Vec3();
 	
